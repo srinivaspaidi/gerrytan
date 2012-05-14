@@ -6,51 +6,57 @@
 	
 	import com.worpress.gerrytan.jpasimple.entity.Book;
 	
+	/**
+	 * Simple implementation of BookDAO using JPA. Each method simply starts and closes
+	 * transaction. Entity object returned by these methods are always detached
+	 *  
+	 * @author gerry
+	 *
+	 */
 	public class BookJPADAOImpl implements BookDAO {
 	
-		private EntityManager entityManager;
+		private EntityManager em;
 		
 		public BookJPADAOImpl (EntityManager entityManager) {
-			this.entityManager = entityManager;
+			this.em = entityManager;
 		}
 		
 		@Override
 		public Book findById(int bookId) {
-			entityManager.getTransaction().begin();
-			Book result = entityManager.find(Book.class, bookId);
-			entityManager.getTransaction().commit();
+			Book result = em.find(Book.class, bookId);
+			em.detach(result);
 			return result;
 		}
 	
 		@Override
 		public List<Book> list() {
-			entityManager.getTransaction().begin();
-			List<Book> result = entityManager.createQuery("SELECT b FROM Book b", Book.class)
+			List<Book> result = em.createQuery("SELECT b FROM Book b", Book.class)
 					.getResultList();
-			entityManager.getTransaction().commit();
+			for (Book b : result) { em.detach(b); }
 			return result;
 		}
 	
 		@Override
 		public int save(Book book) {
-			entityManager.getTransaction().begin();
-			entityManager.persist(book);
-			entityManager.getTransaction().commit();
+			em.getTransaction().begin();
+			em.persist(book);
+			em.getTransaction().commit();
+			em.detach(book);
 			return book.getBookId();
 		}
 	
 		@Override
 		public void update(Book book) {
-			entityManager.getTransaction().begin();
-			entityManager.merge(book);
-			entityManager.getTransaction().commit();
+			em.getTransaction().begin();
+			em.merge(book);
+			em.getTransaction().commit();
+			em.detach(book);
 		}
 	
 		@Override
 		public void delete(Book book) {
-			entityManager.getTransaction().begin();
-			entityManager.remove(book);
-			entityManager.getTransaction().commit();
+			em.remove(book);
+			em.flush();
 		}
 	
 	}
