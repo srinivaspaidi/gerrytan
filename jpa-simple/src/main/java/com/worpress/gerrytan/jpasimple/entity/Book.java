@@ -12,8 +12,24 @@ public class Book {
 	@Column private String author;
 	@Column private int year;
 	
+	/**
+	 * Default constructor without parameter is required for a class to be treated as JPA
+	 * entity
+	 */
 	public Book() {}
 	
+	/**
+	 * This constructor is typically used to instantiate a new entity object. When an entity
+	 * object just got created it doesn't yet have an identity, hence the id field is left at
+	 * its default value (0 for integer)
+	 */
+	public Book(String title, String author, int year) {
+		this(0, title, author, year);
+	}
+	
+	/**
+	 * This constructor is typically used when mapping resultset row when using JDBC
+	 */
 	public Book(int bookId, String title, String author, int year) {
 		this.bookId = bookId;
 		this.title = title;
