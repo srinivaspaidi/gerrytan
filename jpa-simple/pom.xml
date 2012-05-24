@@ -4,7 +4,7 @@
   <artifactId>jpa-simple</artifactId>
   <version>1.0</version>
   <name>Gerry's Blog Simple JPA Application</name>
-  <description>Demonstrate a simple JPA entity using </description>
+  <description>Demonstrate a simple JPA entity </description>
   
   
   <build>
