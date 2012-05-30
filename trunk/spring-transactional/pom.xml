@@ -239,6 +239,12 @@
       </exclusions>
     </dependency>
   </dependencies>
+  <description>Demonstrate declarative transaction-demarcation using Spring @Transactional</description>
+  <url>http://gerrytan.wordpress.com</url>
+  <scm>
+  	<connection>http://gerrytan.googlecode.com/svn/trunk/spring-transactional</connection>
+  	<url>http://code.google.com/p/gerrytan/source/browse/#svn%2Ftrunk%2Fspring-transactional</url>
+  </scm>
   <build>
     <plugins>
       <plugin>
