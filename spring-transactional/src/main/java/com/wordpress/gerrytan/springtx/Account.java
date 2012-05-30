@@ -6,19 +6,21 @@ import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
 
 /**
- * Account entity class. Additional "id" and "version" fields are 'weaved' by AspectJ
- * at compile time. @RooJpa.. annotations below are metadata to instruct Spring Roo
- * to generate additonal stuff for this class which is weaved at compile time
+ * Account entity class. @Roo.. annotations below are metadata to instruct
+ * Spring Roo to generate additional stuffs for this class which will be weaved
+ * at compile time, including additional "id" and "version" field (table column)
  * 
  * @author Gerry Tan - 30 May 2012 - http://gerrytan.wordpress.com
- *
+ * 
  */
 @RooJavaBean
 @RooToString
 @RooJpaActiveRecord
 public class Account {
 
-  @NotNull private String name;
+  @NotNull
+  private String name;
 
-  @NotNull private double balance;
+  @NotNull
+  private double balance;
 }
