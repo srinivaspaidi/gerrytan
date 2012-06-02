@@ -51,6 +51,7 @@
     <h1>Spring JBoss Phonebook Demo</h1>
     <a href="http://gerrytan.wordpress.com">http://gerrytan.wordpress.com</a>
     
+    <!-- Add Contact Form -->
     <div>
       <form:form commandName="newContact" method="POST">
         <span class="label">First Name</span> <form:input path="firstName" /> <br/>
@@ -61,6 +62,7 @@
       </form:form>
     </div>
     
+    <!-- List Contacts -->
     <div>
       <c:choose>
         <c:when test="${empty contacts}">
