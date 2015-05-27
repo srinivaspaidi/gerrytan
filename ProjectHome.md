@@ -1,0 +1,1 @@
+This project contains various source code I used as example and demonstration on http://gerrytan.wordpress.com
